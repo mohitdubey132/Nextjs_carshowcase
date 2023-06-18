@@ -1,11 +1,14 @@
 "use client";
-import { CarProps } from "@/types";
+import { CarProps } from "@/types/index";
 import { getCarRent } from "@/utils";
 import React, { useState } from "react";
 import Image from "next/image";
 import {CustomButton, CarDetails} from "./index";
-const CarCard = ({ car }: CarProps) => {
-  const { city_mpg, year, make, model, transmission, drive } = car;
+interface Car {
+  car: CarProps;
+}
+const CarCard = ({ car }: Car) => {
+  const { city_mpg, year, make, model, transmission, drive  } = car;
   const [isOpen,setIsOpen] =useState(false)
   const carRent = getCarRent(city_mpg, year) || 400;
   return (
